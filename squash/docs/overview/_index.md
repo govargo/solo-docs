@@ -8,7 +8,7 @@ weight: 10
 If you are using [Homebrew](https://brew.sh) package manager you can install `squashctl` with the following command.
 
 ```shell
-brew install solo-io/tap/squash
+brew install solo-io/tap/squashctl
 ```
 
 You can also download by going to our releases page <https://github.com/solo-io/squash/releases>. Once you download, you
@@ -115,7 +115,7 @@ func calchandler(w http.ResponseWriter, r *http.Request) {
 
 In the same folder as `main.go` add a `Dockerfile`:
 
-```
+```shell
 FROM alpine
 COPY microservice /microservice
 ENTRYPOINT ["/microservice"]
@@ -125,7 +125,7 @@ EXPOSE 8080
 
 To build everything conveniently, you can add a `Makefile` (replace  <YOUR REPO HERE> with the appropriate value):
 
-```
+```shell
 microservice:
 	GOOS=linux CGO_ENABLED=0 go build -gcflags "-N -l" -o microservice
 	docker build -t <YOUR REPO HERE>/microservice:0.1 .
@@ -190,7 +190,7 @@ spec:
 and deploy it to kubernetes:
 
 ```shell
-kubectl create -f microservice.yml
+kubectl create --filename microservice.yml
 ```
 
 {{% /expand %}}
